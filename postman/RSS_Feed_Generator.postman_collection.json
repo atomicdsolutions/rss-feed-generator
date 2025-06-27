@@ -1,0 +1,435 @@
+{
+	"info": {
+		"_postman_id": "b0f1b0f1-0f1b-0f1b-0f1b-0f1b0f1b0f1b",
+		"name": "RSS Feed Generator API",
+		"description": "API endpoints for RSS Feed Generator application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Checks",
+			"item": [
+				{
+					"name": "Base Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"health"
+							]
+						},
+						"description": "Check if the server is running"
+					}
+				},
+				{
+					"name": "API Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"health"
+							]
+						},
+						"description": "Check if the API is running"
+					}
+				}
+			]
+		},
+		{
+			"name": "Media",
+			"item": [
+				{
+					"name": "List Media",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/media",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"media"
+							]
+						},
+						"description": "Get list of all media items"
+					}
+				},
+				{
+					"name": "Upload Media",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "title",
+									"value": "Sample Media",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Sample media description",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/media",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"media"
+							]
+						},
+						"description": "Upload a new media file"
+					}
+				},
+				{
+					"name": "Get Media",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/media/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"media",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "123",
+									"description": "Media ID"
+								}
+							]
+						},
+						"description": "Get a specific media item by ID"
+					}
+				},
+				{
+					"name": "Update Media",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Title\",\n    \"description\": \"Updated description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/media/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"media",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "123",
+									"description": "Media ID"
+								}
+							]
+						},
+						"description": "Update a media item"
+					}
+				},
+				{
+					"name": "Delete Media",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/media/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"media",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "123",
+									"description": "Media ID"
+								}
+							]
+						},
+						"description": "Delete a media item"
+					}
+				}
+			]
+		},
+		{
+			"name": "RSS Feeds",
+			"item": [
+				{
+					"name": "List Feeds",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/rss",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rss"
+							]
+						},
+						"description": "Get list of all RSS feeds"
+					}
+				},
+				{
+					"name": "Create Feed",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"My RSS Feed\",\n    \"description\": \"A feed for my content\",\n    \"language\": \"en-us\",\n    \"category\": \"Technology\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/rss",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rss"
+							]
+						},
+						"description": "Create a new RSS feed"
+					}
+				},
+				{
+					"name": "Get Feed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/rss/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rss",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "123",
+									"description": "Feed ID"
+								}
+							]
+						},
+						"description": "Get a specific RSS feed by ID"
+					}
+				},
+				{
+					"name": "Update Feed",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Feed Title\",\n    \"description\": \"Updated feed description\",\n    \"language\": \"en-us\",\n    \"category\": \"News\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/rss/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rss",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "123",
+									"description": "Feed ID"
+								}
+							]
+						},
+						"description": "Update an RSS feed"
+					}
+				},
+				{
+					"name": "Delete Feed",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/rss/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rss",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "123",
+									"description": "Feed ID"
+								}
+							]
+						},
+						"description": "Delete an RSS feed"
+					}
+				},
+				{
+					"name": "Get Feed XML",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/rss/:id/xml",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rss",
+								":id",
+								"xml"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "123",
+									"description": "Feed ID"
+								}
+							]
+						},
+						"description": "Get the RSS feed in XML format"
+					}
+				}
+			]
+		},
+		{
+			"name": "AI Generation",
+			"item": [
+				{
+					"name": "Generate Caption",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mediaId\": \"123\",\n    \"prompt\": \"Generate a caption for this image\",\n    \"model\": \"llama2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/ai/caption",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ai",
+								"caption"
+							]
+						},
+						"description": "Generate a caption for a media item using Ollama"
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}

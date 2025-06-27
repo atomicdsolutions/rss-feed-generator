@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: rss-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production 
+      - PORT=3000
+      - OLLAMA_URL=http://host.docker.internal:11434  # Points to host machine's Ollama
+    volumes:
+      - ./backend/logs:/app/logs
+    # Enable docker host network access
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: npm run dev
+    
+volumes:
+  backend_logs:
