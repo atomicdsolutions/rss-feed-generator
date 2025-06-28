@@ -1,0 +1,17 @@
+# Node.js
+node_modules/
+npm-debug.log*
+.env
+
+# Logs
+logs/
+
+# Uploads (local media storage)
+backend/uploads/
+
+# SQLite database (development)
+backend/src/database/dev.sqlite3
+
+# Docker
+*.env
+!env.example
