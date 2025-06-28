@@ -40,6 +40,22 @@ To apply database migrations (e.g., create tables), navigate to the `backend` di
 npx knex migrate:latest
 ```
 
+## Media Storage & Serving (Phase 2: Media Storage & Serving)
+
+Media files (videos and photos) are stored locally within the `backend/uploads/` directory. The Node.js Express server is configured to serve these files statically, and Nginx proxies requests to make them accessible via the internet.
+
+### Media Upload Endpoint
+
+To upload media, send a `POST` request to `/api/v1/media/upload` with a `multipart/form-data` body containing the file under the field name `media`.
+
+**Example using `curl`:**
+
+```bash
+curl -X POST -F "media=@/path/to/your/file.jpg" http://localhost/api/v1/media/upload
+```
+
+The response will include the `url` where the uploaded media can be accessed.
+
 ## Project Plan
 
 Refer to `plan.md` for the detailed development roadmap.
