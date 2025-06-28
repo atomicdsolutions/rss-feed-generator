@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "a unique ID for your collection",
+		"name": "RSS Feed Generator Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Upload Media",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "media",
+							"type": "file",
+							"src": "/path/to/your/local/file.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/api/v1/media/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"media",
+						"upload"
+					]
+				},
+				"description": "Uploads a media file (image or video) to the server. Replace `/path/to/your/local/file.jpg` with the actual path to your file."
+			},
+			"response": []
+		},
+		{
+			"name": "Add RSS Item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"My Awesome New Content\",\n    \"description\": \"This is a description of my awesome new content.\",\n    \"media_url\": \"/uploads/1719580800000-example.mp4\",\n    \"media_type\": \"video/mp4\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost/api/v1/rss/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rss",
+						"items"
+					]
+				},
+				"description": "Adds a new RSS feed item. Ensure 'media_url' matches the URL returned from the 'Upload Media' endpoint and 'media_type' is correct."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All RSS Items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/v1/rss/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rss",
+						"items"
+					]
+				},
+				"description": "Retrieves all RSS feed items from the database."
+			},
+			"response": []
+		},
+		{
+			"name": "Generate RSS Feed (XML)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/rss.xml",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"rss.xml"
+					]
+				},
+				"description": "Generates and returns the RSS 2.0 XML feed."
+			},
+			"response": []
+		}
+	]
+}
