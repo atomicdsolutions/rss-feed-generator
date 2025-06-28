@@ -28,6 +28,18 @@ To get the basic "Hello World" server up and running, follow these steps:
     Open your web browser and navigate to `http://localhost/`.
     You should see the message "Hello World from Backend!".
 
+## Database Setup (Phase 1: Database Integration)
+
+This project uses Knex.js for database migrations. SQLite is used for development, and PostgreSQL for production.
+
+### Running Migrations
+
+To apply database migrations (e.g., create tables), navigate to the `backend` directory and run:
+
+```bash
+npx knex migrate:latest
+```
+
 ## Project Plan
 
 Refer to `plan.md` for the detailed development roadmap.
