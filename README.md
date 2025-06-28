@@ -54,7 +54,7 @@ To upload media, send a `POST` request to `/api/v1/media/upload` with a `multipa
 curl -X POST -F "media=@/path/to/your/file.jpg" http://localhost/api/v1/media/upload
 ```
 
-The response will include the `url` where the uploaded media can be accessed.
+The response will include the `url` and `media_id` for the uploaded media. The `media_id` should be used when creating an RSS item.
 
 ## RSS Feed API Endpoints (Phase 3: RSS Feed API Endpoints)
 
@@ -63,27 +63,26 @@ This phase introduces API endpoints for managing RSS feed items and generating t
 ### Add RSS Item
 
 - **Endpoint:** `POST /api/v1/rss/items`
-- **Description:** Adds a new RSS feed item to the database.
+- **Description:** Adds a new RSS feed item by linking to an already uploaded media file.
 - **Request Body (JSON):**
   ```json
   {
-    "title": "Your Item Title",
-    "description": "A detailed description of your item.",
-    "media_url": "/uploads/your-uploaded-file.mp4",
-    "media_type": "video/mp4"
+    "media_id": 1, 
+    "title": "My Awesome New Content",
+    "caption": "This is a description of my awesome new content."
   }
   ```
 - **Example using `curl`:**
   ```bash
   curl -X POST -H "Content-Type: application/json" \
-       -d '{"title": "My New Video", "description": "This is a test video.", "media_url": "/uploads/1678888888888-myvideo.mp4", "media_type": "video/mp4"}' \
+       -d '{"media_id": 1, "title": "My New Video", "caption": "This is a test video."}' \
        http://localhost/api/v1/rss/items
   ```
 
 ### Get All RSS Items
 
 - **Endpoint:** `GET /api/v1/rss/items`
-- **Description:** Retrieves all RSS feed items stored in the database.
+- **Description:** Retrieves all RSS feed items from the database.
 - **Example using `curl`:**
   ```bash
   curl http://localhost/api/v1/rss/items
@@ -91,9 +90,10 @@ This phase introduces API endpoints for managing RSS feed items and generating t
 
 ### Generate RSS 2.0 Feed
 
-- **Endpoint:** `GET /rss.xml`
+- **Endpoint:** `GET /api/v1/rss/feed.xml`
 - **Description:** Generates and serves the RSS 2.0 XML feed based on the items in the database.
-- **Example:** Open your web browser and navigate to `http://localhost/rss.xml`.
+- **Example:** Open your web browser and navigate to `http://localhost/api/v1/rss/feed.xml`.
+
 
 ## Enhancements & Refinements (Phase 4: Enhancements & Refinements)
 

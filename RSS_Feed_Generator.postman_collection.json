@@ -16,7 +16,7 @@
 						{
 							"key": "media",
 							"type": "file",
-							"src": "/path/to/your/local/file.jpg"
+							"src": "/path/to/your/local/file.jpg" // IMPORTANT: Replace with your local file path
 						}
 					]
 				},
@@ -33,7 +33,7 @@
 						"upload"
 					]
 				},
-				"description": "Uploads a media file (image or video) to the server. Replace `/path/to/your/local/file.jpg` with the actual path to your file."
+				"description": "Uploads a media file (image or video) to the server. The response will include a `media_id` which should be used for adding an RSS item."
 			},
 			"response": []
 		},
@@ -49,7 +49,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"My Awesome New Content\",\n    \"description\": \"This is a description of my awesome new content.\",\n    \"media_url\": \"/uploads/1719580800000-example.mp4\",\n    \"media_type\": \"video/mp4\"\n}"
+					"raw": "{\n    \"media_id\": 1, // Replace with the media_id obtained from the Upload Media endpoint\n    \"title\": \"My Awesome New Content\",\n    \"caption\": \"This is a description of my awesome new content.\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost/api/v1/rss/items",
@@ -64,7 +64,7 @@
 						"items"
 					]
 				},
-				"description": "Adds a new RSS feed item. Ensure 'media_url' matches the URL returned from the 'Upload Media' endpoint and 'media_type' is correct."
+				"description": "Adds a new RSS feed item by linking to an already uploaded media file. Ensure 'media_id' is correct."
 			},
 			"response": []
 		},
@@ -96,13 +96,16 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/rss.xml",
+					"raw": "http://localhost/api/v1/rss/feed.xml",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"rss.xml"
+						"api",
+						"v1",
+						"rss",
+						"feed.xml"
 					]
 				},
 				"description": "Generates and returns the RSS 2.0 XML feed."
