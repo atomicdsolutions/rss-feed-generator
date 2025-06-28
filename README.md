@@ -56,6 +56,45 @@ curl -X POST -F "media=@/path/to/your/file.jpg" http://localhost/api/v1/media/up
 
 The response will include the `url` where the uploaded media can be accessed.
 
+## RSS Feed API Endpoints (Phase 3: RSS Feed API Endpoints)
+
+This phase introduces API endpoints for managing RSS feed items and generating the RSS 2.0 XML feed.
+
+### Add RSS Item
+
+- **Endpoint:** `POST /api/v1/rss/items`
+- **Description:** Adds a new RSS feed item to the database.
+- **Request Body (JSON):**
+  ```json
+  {
+    "title": "Your Item Title",
+    "description": "A detailed description of your item.",
+    "media_url": "/uploads/your-uploaded-file.mp4",
+    "media_type": "video/mp4"
+  }
+  ```
+- **Example using `curl`:**
+  ```bash
+  curl -X POST -H "Content-Type: application/json" \
+       -d '{"title": "My New Video", "description": "This is a test video.", "media_url": "/uploads/1678888888888-myvideo.mp4", "media_type": "video/mp4"}' \
+       http://localhost/api/v1/rss/items
+  ```
+
+### Get All RSS Items
+
+- **Endpoint:** `GET /api/v1/rss/items`
+- **Description:** Retrieves all RSS feed items stored in the database.
+- **Example using `curl`:**
+  ```bash
+  curl http://localhost/api/v1/rss/items
+  ```
+
+### Generate RSS 2.0 Feed
+
+- **Endpoint:** `GET /rss.xml`
+- **Description:** Generates and serves the RSS 2.0 XML feed based on the items in the database.
+- **Example:** Open your web browser and navigate to `http://localhost/rss.xml`.
+
 ## Project Plan
 
 Refer to `plan.md` for the detailed development roadmap.
