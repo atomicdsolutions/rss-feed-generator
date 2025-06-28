@@ -95,6 +95,18 @@ This phase introduces API endpoints for managing RSS feed items and generating t
 - **Description:** Generates and serves the RSS 2.0 XML feed based on the items in the database.
 - **Example:** Open your web browser and navigate to `http://localhost/rss.xml`.
 
+## Enhancements & Refinements (Phase 4: Enhancements & Refinements)
+
+This phase focuses on improving the robustness of the API with comprehensive error handling and input validation.
+
+### Error Handling
+
+Global error handling middleware is implemented to catch and process errors consistently across the application, providing meaningful error responses.
+
+### Input Validation
+
+API endpoints, particularly for adding RSS items, now include input validation using `express-validator` to ensure data integrity and provide clear feedback on invalid inputs.
+
 ## Project Plan
 
 Refer to `plan.md` for the detailed development roadmap.
